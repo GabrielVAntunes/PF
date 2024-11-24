@@ -23,7 +23,7 @@ tree1 = Node (1,2,3)
 -- Para testar alguma função:
 
 main :: IO()
-main = print("func" turmaExemplo)
+main = print("func" exampleTree)
 
 -- a) Calcula a altura de uma árvore
 
