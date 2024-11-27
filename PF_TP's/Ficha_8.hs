@@ -151,13 +151,13 @@ ordenaExtrato (Ext initVal lext) = (Ext initVal (sortOn (\(date,_,_) -> date) le
 
 --     Saldo anterior: 300
 --     ---------------------------------------
---     Data Descricao Credito Debito
+--     Data     Descricao    Credito    Debito
 --     ---------------------------------------
---     2010/4/5 DEPOSITO 2000
---     2010/8/10 COMPRA 37,5
---     2010/9/1 LEV 60
---     2011/1/7 JUROS 100
---     2011/1/22 ANUIDADE 8
+--     2010/4/5  DEPOSITO    2000
+--     2010/8/10 COMPRA                 37,5
+--     2010/9/1  LEV                    60
+--     2011/1/7  JUROS       100
+--     2011/1/22 ANUIDADE               8
 --     ---------------------------------------
 --     Saldo actual: 2294,5
 
