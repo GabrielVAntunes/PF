@@ -155,7 +155,7 @@ powerEnumFrom n x = powerEnumFrom n (x-1) ++ [n^(x-1)]  -- Mais uma vez temos de
 
 isPrime :: Int -> Bool
 isPrime n 
-    | n < 2     = False  -- Números menores que 2 não são primos
+    | n < 2     = True  -- Números menores que 2 são primos
     | otherwise = not (hasDivisors n 2)
 
 -- Função auxiliar que verifica se n tem divisores entre 2 e √n
@@ -163,7 +163,7 @@ hasDivisors :: Int -> Int -> Bool
 hasDivisors n m
     | m * m > n      = False             
     | n `mod` m == 0 = True             
-    | otherwise      = hasDivisors n (m + 1)  
+    | otherwise      = hasDivisors n (m + 1) 
 
 -- 22. Testa se a primeira lista é prefixo da segunda
 
