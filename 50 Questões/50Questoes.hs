@@ -224,10 +224,10 @@ _delete x (h:t) | x == h = t                        -- Quando encontrar o valor 
 -- 28. Função que remove as primerias ocorrências dos elementos selecionados numa lista
 
 bSlashBSlash :: Eq a => [a] -> [a] -> [a]
-bSlashBSlash [] l = l
-bSlashBSlash _ [] = []
-bSlashBSlash (h:t) l = bSlashBSlash t (_delete h l) -- Recorremos à função definida anteriormente para facilitar caso os elementos sejam repetidos ou não estejam pela mesma ordem
-                                                    -- Basicamente aplicamos a função "_delete" para cada elemento da lista 
+bSlashBSlash [] _ = []
+bSlashBSlash l [] = l
+bSlashBSlash (h:t) l | elem h l =  bSlashBSlash t (delete h l) -- Recorremos à função definida anteriormente para facilitar caso os elementos sejam repetidos ou não estejam pela mesma ordem
+                     | otherwise = h : bSlashBSlash t l -- Basicamente aplicamos a função "_delete" para cada elemento da lista                         
 
 -- 29. Função que retorna a união entre 2 listas (acrescenta à primeira lista os elementos da segunda que não constem na mesma)
 
