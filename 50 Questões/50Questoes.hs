@@ -287,14 +287,10 @@ _lookup a ((h1,h2) : t) | a == h1 = Just h2
 
 -- 36. Calcula o maior prefixo crescente de uma lista dada 
 
-preCrescente :: Ord a => [a] -> [a]
-preCrescente [] = []
-preCrescente (h:t) = preCrescenteAux [h] t                  -- Chamamos a função auxiliar que tem a capacidade de guardar o maior prefixo
-
-preCrescenteAux :: Ord a => [a] -> [a] -> [a]
-preCrescenteAux pref [] = pref                                                  -- Caso a lista termine quer dizer que o maior prefixo crescente é a própria lista
-preCrescenteAux pref (h:t) | (last pref) < h = preCrescenteAux (pref ++ [h]) t  -- Verificamos se o próximo elemento a ser colocado mantém a ordem crescente e inserimo-lo
-                           | otherwise = pref                                  --ou não de acordo com a condição
+preCresc :: Ord a => [a] -> [a]
+preCresc [] = []
+preCresc (h:t) | h < head t = h : preCresc t            -- Avançamos a lista enquanto o valor à cabeça for menor que o próximo na lista
+               | otherwise = [h]                        -- Quando o proximo valor for menor que o valor á cabeça escrevemos o valor à cabeça e a função termina
 
 -- 37. Função que ordena uma lista por ordem crescente 
 
