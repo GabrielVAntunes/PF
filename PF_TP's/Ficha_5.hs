@@ -72,6 +72,21 @@ sortAux f a (h:t) | f a <= f h = a : h : t          -- Caso o elemento que estam
     -- 7: chamamos -- sortAux fst (3,1) [(1,2),(2,5)], que resulta em [(1,2),(2,5),(3,1)]
     -- 8: Termina a função
 
+-- Resolução alternativa MAIS SIMPLES mas com recurso a mais auxiliares
+
+_sortOn :: Ord b => (a -> b) -> [a] -> [a]
+_sortOn f [] = []
+_sortOn f l = sortOnAux f [] l
+
+sortOnAux :: Ord b =>  (a -> b) -> [a] -> [a] -> [a]
+sortOnAux f l [] = l
+sortOnAux f l (h:t) = sortOnAux f (_insertBy f h l) t
+
+_insertBy :: Ord b => (a -> b) -> a -> [a] -> [a]              -- Função auxiliar que insere os elementos numa lista ordenados segundo o critério especificado
+_insertBy f a [] = [a]
+_insertBy f a (h:t) | f a >= f h = h : _insertBy f a t
+                    | otherwise = a : h : t
+
 -- Ex2: Relembre a questão sobre polinómios introduzida na Ficha 3, onde um polinómio era
 --representado por uma lista de monómios representados por pares (coeficiente, expoente)
 
